@@ -1,11 +1,13 @@
-Para poder utilizar esto
+// Para poder utilizar esto
 
-primero que nada utilizar
+// primero que nada utilizar
 
-npm install // Con esto instalamos todas las dependencias
+// npm install // Con esto instalamos todas las dependencias
 
-segundo instalar
+//segundo instalar
 
-node index.js
+// node index.js
 
-Gracias
+//Gracias
+
+// npm install dotenv
