@@ -13,27 +13,13 @@ app.use(express.json());
 
 const http = require('http').createServer(app);
 
-//const mongoose = require("mongoose");
 
-
-// const uri = "mongodb+srv://luchomoreno:<password>@cluster0.vic1knz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-// mongodb+srv://luchomoreno:<password>@cluster0.vic1knz.mongodb.net/
-
-
-
-/******/
+//( CONTROLLERS )
 const UsrController = require('./controllers/user');
-// npm install dotenv
-//require('dotenv').config();
 
-/*
-mongoose
-  .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log("connected");
-  })
-  .catch((err) => console.log(err));*/
 
+
+// Endpont main.
 
 app.get("/", (req, res) => {
   //res.send("Hola estoy funcionando.");
@@ -43,7 +29,6 @@ app.get("/", (req, res) => {
 
 
 // Creo un nuevo usuario
-
 app.post("/users",async (req,res) =>{
     
   let name = req.body.name;
@@ -69,8 +54,6 @@ app.post("/users",async (req,res) =>{
   }  
   
 });
-
-
 
 
 app.listen(PORT, ()=> {
