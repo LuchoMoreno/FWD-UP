@@ -4,7 +4,8 @@ const Usr = require('../models/user');
 
 const addUser = async (name,lastname,email,isActive,password) => {
 
-    let existUser = await Usr.findOne({ email: email });
+   // let existUser = await Usr.findOne({ email: email });
+   let existUser = false;
     console.log(existUser);
     if(!existUser) {
 

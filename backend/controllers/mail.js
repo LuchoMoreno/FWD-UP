@@ -12,12 +12,13 @@ let transporter = nodemailer.createTransport({
     }
   });
   
+  /*
   let mailOptions = {
     from: 'myemail@gmail.com',
     to: "belen.alegre@gmail.com",
     subject: `Notificaciones de fullstack`,
     html: `Estamos probando como enviar mails.`,
-  };
+  };*/
   
 const sendMail = () => {
   

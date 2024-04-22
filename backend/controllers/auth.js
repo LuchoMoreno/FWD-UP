@@ -1,6 +1,8 @@
 require('mongoose');
 const Usr = require('../models/user');
 const jwt = require('jsonwebtoken');
+const {SECRET} = require('./utils/config');
+
 
 const login = async(email,password) => {
 
@@ -15,7 +17,8 @@ const login = async(email,password) => {
             // retorno token
             //jwt.sign('payload','secret_key','options')
             //const token = jwt.sign({ foo: 'bar' }, 'secret_key');    
-            const token = "fgdgbrfeer6g1df23g86ef2gs";
+            //const token = "fgdgbrfeer6g1df23g86ef2gs";
+            const token = jwt.sign({ email: email }, SECRET, { expiresIn: '1h' });
             return token;
     }
     return null; // retorno 
