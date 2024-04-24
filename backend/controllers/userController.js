@@ -76,4 +76,14 @@ const deleteUser = async(id) => {
     return result;
 }
 
-module.exports = { addUser, getAllUsers, getUser, editUser, editRoles, editDolls, deleteUser }
+
+const removeDollReference = async(userId, dollId) =>{
+    try {
+        // Actualizar el usuario para eliminar la referencia del muñeco
+        await Usr.findByIdAndUpdate(userId, { $pull: { dolls: dollId } });
+      } catch (error) {
+        console.error("Error al eliminar la referencia del muñeco del usuario:", error);
+      }
+};
+
+module.exports = { addUser, getAllUsers, getUser, editUser, editRoles, editDolls, deleteUser, removeDollReference}

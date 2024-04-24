@@ -33,11 +33,11 @@ dollsRouter.post("/dolls",async (req,res) =>{
   
 
   // Elimino un doll
-  dollsRouter.delete("/dolls/:id", async(req,res) =>{
+  dollsRouter.delete("/dolls/:userId/:id", async(req,res) =>{
   
     try{
   
-      const result = await DollController.deleteDoll(req.params.id);
+      const result = await DollController.deleteDoll(req.params.userId, req.params.id);
       if(result){
         res.status(200).send("Muñeco borrado.")
       }else{
