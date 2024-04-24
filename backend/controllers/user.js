@@ -64,6 +64,11 @@ const editRoles = async(roles,id) => {
     return result;
 }
 
+const editDolls = async(userId, dollId) => {
+    const result = await Usr.findByIdAndUpdate(userId, { $push: { dolls: dollId } });
+    return result;
+}
+
 const deleteUser = async(id) => {
 
     const result = await Usr.findByIdAndDelete(id);
@@ -71,4 +76,4 @@ const deleteUser = async(id) => {
     return result;
 }
 
-module.exports = { addUser, getAllUsers, getUser, editUser, editRoles, deleteUser }
+module.exports = { addUser, getAllUsers, getUser, editUser, editRoles, editDolls, deleteUser }
