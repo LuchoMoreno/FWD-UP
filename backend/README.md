@@ -1,15 +1,20 @@
 # ![Universidad de palermo](https://www.palermo.edu/images/header/logo.png)
 
-// Para poder utilizar esto
 
-// primero que nada utilizar
+## Instalacion
 
-// npm install // Con esto instalamos todas las dependencias
+Primero debemos instalar las dependencias. Por lo que abriremos una terminal y ejecutaremos el siguiente comando:
 
-//segundo instalar
+```
+npm install
+```
 
-// node index.js
+## Ejecucion
 
-//Gracias
+Una vez instaladas las dependencias, debemos ejecutar el siguiente comando:
 
-// npm install dotenv
+```
+node index.js
+```
+
+Con esto ya tendremos el proyecto corriendo.
