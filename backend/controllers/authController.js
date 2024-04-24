@@ -1,5 +1,5 @@
 require('mongoose');
-const Usr = require('../models/user');
+const Usr = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 
 const {SECRET} = require('../utils/config');

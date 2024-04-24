@@ -1,6 +1,6 @@
 require('mongoose');
 
-const Doll = require('../models/doll');
+const Doll = require('../models/dollModel');
 
 const UsrController = require('../controllers/userController');
 

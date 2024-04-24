@@ -34,7 +34,7 @@ usersRouter.post("/usersNew",async (req,res) =>{
   usersRouter.put("/users/:id",async (req,res) =>{
   
     const user = { _id: req.params.id, ...req.body };
-    //             {_id: req.params.id, name: req.body.name, lastname, email }
+    // {_id: req.params.id, name: req.body.name, lastname, email }
   
     console.log(user);
     try{
