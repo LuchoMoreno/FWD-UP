@@ -2,6 +2,8 @@ const usersRouter = require('express').Router();
 
 //( CONTROLLERS )
 const UsrController = require('../controllers/user');
+const Middleware = require('../middleware/auth-middleware');
+
 
 
 
@@ -83,6 +85,39 @@ usersRouter.post("/usersNew",async (req,res) =>{
     }
   
   });
+
+    // Get de todos los usuarios
+  usersRouter.get("/users", async (req,res) =>{
+  
+    let limit = req.query.limit;
+    let offset = req.query.offset;
+  
+    try{
+        const results = await UsrController.getAllUsers(limit,offset);
+        res.status(200).json(results);
+  
+    }catch(error){
+        res.status(500).send("Error. Intente más tarde.")
+    }
+  
+  });
+
+
+  // Get de todos los usuarios pero privado
+  usersRouter.get("/usersPrivate", Middleware.verify, async (req,res) =>{
+
+    let limit = req.query.limit;
+    let offset = req.query.offset;
+
+    try{
+        const results = await UsrController.getAllUsers(limit,offset);
+        res.status(200).json(results);
+
+    }catch(error){
+        res.status(500).send("Error. Intente más tarde.")
+    }
+
+});
   
 
   module.exports = usersRouter;
