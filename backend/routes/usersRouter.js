@@ -6,7 +6,6 @@ const Middleware = require('../middleware/auth-middleware');
 
 
 
-
 // Creo un nuevo usuario
 usersRouter.post("/usersNew",async (req,res) =>{
     
@@ -30,6 +29,7 @@ usersRouter.post("/usersNew",async (req,res) =>{
     
   });
   
+
   // Modifico un usuario
   usersRouter.put("/users/:id",async (req,res) =>{
   
@@ -70,40 +70,8 @@ usersRouter.post("/usersNew",async (req,res) =>{
   });
   
   
-  // Get de todos los usuarios
-  usersRouter.get("/users", async (req,res) =>{
-  
-    let limit = req.query.limit;
-    let offset = req.query.offset;
-  
-    try{
-        const results = await UsrController.getAllUsers(limit,offset);
-        res.status(200).json(results);
-  
-    }catch(error){
-        res.status(500).send("Error. Intente más tarde.")
-    }
-  
-  });
-
-    // Get de todos los usuarios
-  usersRouter.get("/users", async (req,res) =>{
-  
-    let limit = req.query.limit;
-    let offset = req.query.offset;
-  
-    try{
-        const results = await UsrController.getAllUsers(limit,offset);
-        res.status(200).json(results);
-  
-    }catch(error){
-        res.status(500).send("Error. Intente más tarde.")
-    }
-  
-  });
-
-
-  // Get de todos los usuarios pero privado
+  // Get de todos los usuarios (ESTE METODO ES PRIVADO) 
+  // En postman hay que ir a "Authorization", seleccionar Bearer Token y pegarlo al mismo pero SIN comillas.
   usersRouter.get("/usersPrivate", Middleware.verify, async (req,res) =>{
 
     let limit = req.query.limit;
