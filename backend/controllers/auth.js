@@ -1,7 +1,8 @@
 require('mongoose');
 const Usr = require('../models/user');
 const jwt = require('jsonwebtoken');
-const {SECRET} = require('./utils/config');
+
+const {SECRET} = require('../utils/config');
 
 
 const login = async(email,password) => {
