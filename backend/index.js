@@ -17,14 +17,17 @@ const usersRouter = require('./routes/usersRouter');
 const authRouter = require('./routes/authRouter');
 const dollRouter = require('./routes/dollRouter');
 
+
+
 // UTILIZO LAS RUTAS.
 app.use('/api/users', usersRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/dolls', dollRouter);
 
+
+
 // Endpont main.
 app.get("/", (req, res) => {
-  //res.send("Hola estoy funcionando.");
   res.status(200).json("Hola estoy funcionando.");
 });
 

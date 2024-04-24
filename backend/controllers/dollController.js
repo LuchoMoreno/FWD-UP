@@ -2,7 +2,7 @@ require('mongoose');
 
 const Doll = require('../models/doll');
 
-const UsrController = require('../controllers/user');
+const UsrController = require('../controllers/userController');
 
 
 const addDoll = async (userId, type, color, accessories) => {

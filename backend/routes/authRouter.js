@@ -1,7 +1,7 @@
 const authRouter = require('express').Router();
 
 //( CONTROLLERS )
-const AuthController = require('../controllers/auth');
+const AuthController = require('../controllers/authController');
 
 
 authRouter.post("/login", async (req,res) => {
