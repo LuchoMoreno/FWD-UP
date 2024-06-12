@@ -5,7 +5,7 @@ const RankingController = require('../controllers/rankingController.js');
 const Middleware = require('../middleware/auth-middleware');
   
   // Get de 3 tipos de muñecos en el top.
-  rankingRouter.get("/ranking", Middleware.verify, async (req,res) =>{
+  rankingRouter.get("/ranking", async (req,res) =>{
    
     try{
         

@@ -51,7 +51,7 @@ dollsRouter.post("/dolls", Middleware.verify, async (req,res) =>{
   
   
   // Get de todos los muñecos (ESTE METODO ES PRIVADO) 
-  dollsRouter.get("/dolls", Middleware.verify, async (req,res) =>{
+  dollsRouter.get("/dolls", async (req,res) =>{
 
     let limit = req.query.limit;
     let offset = req.query.offset;
