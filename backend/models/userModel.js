@@ -21,7 +21,7 @@ const usrSchema = new Schema({
 	password:{ type: String, required:true
 	},
 
-	dolls: [{ type: Schema.Types.ObjectId, ref: 'Doll' }], // Array de referencias a muñecos
+	dolls: [{ type: Schema.Types.ObjectId, ref: 'dolls' }], // Array de referencias a muñecos
 
 	
 }, { timestamps: true } ).set('toJSON',{
@@ -33,5 +33,5 @@ const usrSchema = new Schema({
 });
 
 
-const Usr = mongoose.model('usr',usrSchema);
+const Usr = mongoose.model('users',usrSchema);
 module.exports = Usr;

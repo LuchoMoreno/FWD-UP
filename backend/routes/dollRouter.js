@@ -5,8 +5,8 @@ const DollController = require('../controllers/dollController');
 const Middleware = require('../middleware/auth-middleware');
 
 
-// Creo un nuevo usuario
-dollsRouter.post("/dolls",async (req,res) =>{
+// Creo un nuevo peluche
+dollsRouter.post("/dolls", Middleware.verify, async (req,res) =>{
     
     let userId = req.body.userId;
     let type = req.body.type;
@@ -19,11 +19,11 @@ dollsRouter.post("/dolls",async (req,res) =>{
       if(result){
         res.status(201).send("Peluche creado correctamente"); // 201
       }
+      else
+      {
+        res.status(404).send("No existe ningun usuario con ese ID"); // 404
+      }
       
-      else{
-        res.status(409).send("El peluche ya existe"); // 409
-      }  
-
     }catch(error){
       console.log(error);
       res.status(500).send("Error al crear peluche."); //500
@@ -33,7 +33,7 @@ dollsRouter.post("/dolls",async (req,res) =>{
   
 
   // Elimino un doll
-  dollsRouter.delete("/dolls/:userId/:id", async(req,res) =>{
+  dollsRouter.delete("/dolls/:userId/:id", Middleware.verify, async(req,res) =>{
   
     try{
   
@@ -50,9 +50,7 @@ dollsRouter.post("/dolls",async (req,res) =>{
   });
   
   
-
   // Get de todos los muñecos (ESTE METODO ES PRIVADO) 
-  // En postman hay que ir a "Authorization", seleccionar Bearer Token y pegarlo al mismo pero SIN comillas.
   dollsRouter.get("/dolls", Middleware.verify, async (req,res) =>{
 
     let limit = req.query.limit;

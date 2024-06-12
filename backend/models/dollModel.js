@@ -21,5 +21,5 @@ const dollSchema = new Schema({
 });
 
 
-const Doll = mongoose.model('doll', dollSchema);
+const Doll = mongoose.model('dolls', dollSchema);
 module.exports = Doll;

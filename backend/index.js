@@ -20,9 +20,9 @@ const dollRouter = require('./routes/dollRouter');
 
 
 // UTILIZO LAS RUTAS.
-app.use('/api/users', usersRouter);
 app.use('/api/auth', authRouter);
-app.use('/api/dolls', dollRouter);
+app.use('/api', usersRouter);
+app.use('/api', dollRouter);
 
 
 
