@@ -7,9 +7,15 @@ const {PORT} = require('./utils/config');
 
 const express = require('express');
 
+const cors = require('cors'); // Importa el paquete cors
+
 const app = express();
 
+app.use(cors()); // Usa el middleware cors
+
 app.use(express.json());
+
+
 
 
 // IMPORTO LAS RUTAS.
