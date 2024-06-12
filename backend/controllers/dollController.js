@@ -42,21 +42,24 @@ const addDoll = async (userId, type, color, accessories) => {
 }
 
 
-const deleteDoll = async (userId, dollId) => {
+const deleteDoll = async (id) => {
   try {
 
     // Buscar el muñeco por su ID
-    const doll = await Doll.findById(dollId);
+    const doll = await Doll.findById(id);
 
     if (!doll) {
       return false; // Si el muñeco no existe, retornar false
     }
 
     // Eliminar el muñeco
-    await Doll.findByIdAndDelete(dollId);
+    await Doll.findByIdAndDelete(id);
 
-     // Actualizar el usuario para eliminar la referencia del muñeco
-     await Usr.findByIdAndUpdate(userId, { $pull: { dolls: dollId } });
+    // Actualizar el usuario para eliminar la referencia del muñeco
+    //await Usr.findByIdAndUpdate(userId, { $pull: { dolls: dollId } });
+
+    // Directamente elimino todos juntos de las referencias de dolls que existan en usuarios.
+    await Usr.updateMany({ dolls: id }, { $pull: { dolls: id } });
 
     return true;
 

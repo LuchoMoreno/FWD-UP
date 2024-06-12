@@ -33,15 +33,15 @@ dollsRouter.post("/dolls", Middleware.verify, async (req,res) =>{
   
 
   // Elimino un doll
-  dollsRouter.delete("/dolls/:userId/:id", Middleware.verify, async(req,res) =>{
+  dollsRouter.delete("/dolls/:id", Middleware.verify, async(req,res) =>{
   
     try{
   
-      const result = await DollController.deleteDoll(req.params.userId, req.params.id);
+      const result = await DollController.deleteDoll(req.params.id);
       if(result){
         res.status(200).send("Muñeco borrado.")
       }else{
-        res.status(404).send("No se ha podido eliminar el muñeco.")
+        res.status(404).send("El muñeco no existe.")
       }  
   
     }catch(error){
