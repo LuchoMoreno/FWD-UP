@@ -1,0 +1,267 @@
+{
+	"info": {
+		"_postman_id": "9b5c2f1a-874b-4273-a4e9-d522027d5e74",
+		"name": "API PELUCHES",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34461364"
+	},
+	"item": [
+		{
+			"name": "AUTH",
+			"item": [
+				{
+					"name": "postAuth",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"lucho.moreno@live.com\",\r\n  \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "USERS",
+			"item": [
+				{
+					"name": "postUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Carolina\",\r\n  \"lastname\": \"Perez\",\r\n  \"email\": \"caroperez@live.com\",\r\n  \"isActive\": true,\r\n  \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/usersNew",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"usersNew"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "id",
+								"value": "6626a2b3e7274c31230656fa",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/users/users/6628ac1c189183bca6fc134f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"users",
+								"6628ac1c189183bca6fc134f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "putUser",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Editttt\",\r\n  \"lastname\": \"Editado\",\r\n  \"email\": \"usuarioEditado@live.com\",\r\n  \"isActive\": true,\r\n  \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/users/6626a3965781fc2fc300b702",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"users",
+								"6626a3965781fc2fc300b702"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUsers (Private)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imx1Y2hvLm1vcmVub0BsaXZlLmNvbSIsImlhdCI6MTcxMzk5NDg1NSwiZXhwIjoxNzEzOTk4NDU1fQ.KngBSjEDukHZpnS_DbZgd1dJGfn6OBC3odM49BPpR54",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/users/usersPrivate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"usersPrivate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DOLLS",
+			"item": [
+				{
+					"name": "postDoll",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": \"66297da15b2d9694eea2c364\",\r\n  \"type\": \"Mapache\",\r\n  \"color\": \"Marron\",\r\n  \"accessories\": \"Notebook\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/dolls/dolls",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"dolls",
+								"dolls"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteDoll",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "id",
+								"value": "6626a2b3e7274c31230656fa",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/dolls/dolls/6628ac1c189183bca6fc134f/66296eaab3963d572e103456",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"dolls",
+								"dolls",
+								"6628ac1c189183bca6fc134f",
+								"66296eaab3963d572e103456"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getDolls (Private)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imx1Y2hvLm1vcmVub0BsaXZlLmNvbSIsImlhdCI6MTcxMzk5NDg1NSwiZXhwIjoxNzEzOTk4NDU1fQ.KngBSjEDukHZpnS_DbZgd1dJGfn6OBC3odM49BPpR54",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/dolls/dolls",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"dolls",
+								"dolls"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
