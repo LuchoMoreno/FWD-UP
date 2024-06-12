@@ -11,8 +11,12 @@ const dollSchema = new Schema({
     
 	accessories:{ type: String, required:true
 	},
-
 	
+	user: { type: Schema.Types.ObjectId,
+		ref: 'users', // Referencia al modelo de usuario
+		required: true
+	}
+
 }, { timestamps: true } ).set('toJSON',{
     transform: (document, object) => {
         object.id = document.id;

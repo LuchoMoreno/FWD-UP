@@ -15,7 +15,7 @@ const getDoll = async (id) => {
 
 const getAllDolls = async (limit, offset) => {
 
-  const dolls = await Doll.find({}).limit(limit).skip(offset);
+  const dolls = await Doll.find({}).limit(limit).skip(offset).populate('user', 'name email');
 
   return dolls;
 }
@@ -29,7 +29,7 @@ const addDoll = async (userId, type, color, accessories) => {
     return false; // Si el usuario no existe, retornar false
   }
   
-  const doll = new Doll({ type: type, color: color, accessories: accessories });
+  const doll = new Doll({ type: type, color: color, accessories: accessories, user: userId});
 
   let dollGuardado = await doll.save();
   
