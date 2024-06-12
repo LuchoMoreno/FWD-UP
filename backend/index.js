@@ -16,6 +16,7 @@ app.use(express.json());
 const usersRouter = require('./routes/usersRouter');
 const authRouter = require('./routes/authRouter');
 const dollRouter = require('./routes/dollRouter');
+const rankingRouter = require('./routes/rankingRouter');
 
 
 
@@ -23,6 +24,7 @@ const dollRouter = require('./routes/dollRouter');
 app.use('/api/auth', authRouter);
 app.use('/api', usersRouter);
 app.use('/api', dollRouter);
+app.use('/api', rankingRouter);
 
 
 
