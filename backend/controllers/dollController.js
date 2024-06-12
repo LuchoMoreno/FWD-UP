@@ -82,4 +82,12 @@ const deleteDoll = async (id) => {
   }
 };
 
-module.exports = {getDoll, getAllDolls, addDoll, deleteDoll }
+
+const contarDocumentos = async () => {
+
+  const totalDolls = await Doll.countDocuments();
+
+  return totalDolls;
+}
+
+module.exports = {getDoll, getAllDolls, addDoll, deleteDoll, contarDocumentos}

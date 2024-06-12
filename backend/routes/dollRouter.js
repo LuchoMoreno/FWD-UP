@@ -51,19 +51,22 @@ dollsRouter.post("/dolls", Middleware.verify, async (req,res) =>{
   
   
   // Get de todos los muñecos (ESTE METODO ES PRIVADO) 
-  dollsRouter.get("/dolls", async (req,res) =>{
+  dollsRouter.get("/dolls", async (req, res) => {
+    let limit = parseInt(req.query.limit) || 10;
+    let offset = parseInt(req.query.offset) || 0;
 
-    let limit = req.query.limit;
-    let offset = req.query.offset;
-
-    try{
-        const results = await DollController.getAllDolls(limit,offset);
-        res.status(200).json(results);
-
-    }catch(error){
-        res.status(500).send("Error. Intente más tarde.")
-    }
-
+    try {
+      const results = await DollController.getAllDolls(limit, offset);
+      const totalDolls = await DollController.contarDocumentos(); // Obtén el conteo total de muñecos
+      
+      // Enviar un objeto JSON que contiene tanto la data como el total de muñecos
+      res.status(200).json({
+          result: results,
+          totalCount: totalDolls
+      });
+  } catch (error) {
+      res.status(500).send("Error. Intente más tarde.");
+  }
 });
   
 
