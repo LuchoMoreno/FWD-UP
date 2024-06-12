@@ -44,6 +44,19 @@ usersRouter.get("/users", Middleware.verify, async (req, res) => {
 });
 
 
+usersRouter.get("/users/:id", Middleware.verify, async (req, res) => {
+
+  try {
+    const results = await UsrController.getUser(req.params.id);
+    res.status(200).json(results);
+
+  } catch (error) {
+    res.status(500).send("Error. Intente más tarde.")
+  }
+
+});
+
+
 // Modifico un usuario
 usersRouter.put("/users/:id", Middleware.verify, async (req, res) => {
 

@@ -11,7 +11,7 @@ const getAllUsers = async (limit,offset) => {
 
 const getUser = async(id) => {
 
-    const user = await Usr.findById(id);
+    const user = await Usr.findById(id).populate('dolls');;
     
     return user;
 }
