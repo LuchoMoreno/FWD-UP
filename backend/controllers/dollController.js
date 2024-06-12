@@ -2,6 +2,7 @@ require('mongoose');
 
 const Doll = require('../models/dollModel');
 const Usr = require('../models/userModel');
+const Ranking = require('../models/rankingModel');
 
 
 
@@ -35,10 +36,22 @@ const addDoll = async (userId, type, color, accessories) => {
   
   // Edito la instancia de usuario para agregarle el muñeco
   await Usr.findByIdAndUpdate(userId, { $push: { dolls: dollGuardado._id } });
+
+
+  // Actualizar o crear el ranking para este tipo de muñeco
+  let ranking = await Ranking.findOne({ dollType: type });
+  if (ranking) {
+    ranking.chosenCount += 1;
+  } 
   
-   return { dollGuardado };
+  else {
+    ranking = new Ranking({dollType: type, chosenCount: 1
+    });
+  }
 
+  await ranking.save();
 
+  return { dollGuardado };
 }
 
 
