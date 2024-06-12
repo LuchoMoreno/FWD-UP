@@ -51,7 +51,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"Carolina\",\r\n  \"lastname\": \"Perez\",\r\n  \"email\": \"caroperez@live.com\",\r\n  \"isActive\": true,\r\n  \"password\": \"1234\"\r\n}",
+							"raw": "{\r\n  \"name\": \"Lucho\",\r\n  \"lastname\": \"Moreno\",\r\n  \"email\": \"lucho.moreno@live.com\",\r\n  \"isActive\": true,\r\n  \"password\": \"1234\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -59,7 +59,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/users/usersNew",
+							"raw": "http://localhost:8080/api/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -67,8 +67,7 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"users",
-								"usersNew"
+								"users"
 							]
 						}
 					},
@@ -82,12 +81,11 @@
 							{
 								"key": "id",
 								"value": "6626a2b3e7274c31230656fa",
-								"type": "text",
 								"disabled": true
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/api/users/users/6628ac1c189183bca6fc134f",
+							"raw": "http://localhost:8080/api/users/6628ac1c189183bca6fc134f",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -95,7 +93,6 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"users",
 								"users",
 								"6628ac1c189183bca6fc134f"
 							]
@@ -106,6 +103,16 @@
 				{
 					"name": "putUser",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
@@ -118,7 +125,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/users/users/6626a3965781fc2fc300b702",
+							"raw": "http://localhost:8080/api/users/6626a3965781fc2fc300b702",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -126,7 +133,6 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"users",
 								"users",
 								"6626a3965781fc2fc300b702"
 							]
@@ -135,14 +141,14 @@
 					"response": []
 				},
 				{
-					"name": "getUsers (Private)",
+					"name": "getUsers",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imx1Y2hvLm1vcmVub0BsaXZlLmNvbSIsImlhdCI6MTcxMzk5NDg1NSwiZXhwIjoxNzEzOTk4NDU1fQ.KngBSjEDukHZpnS_DbZgd1dJGfn6OBC3odM49BPpR54",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -150,7 +156,37 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/users/usersPrivate",
+							"raw": "http://localhost:8080/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getDollsByUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/users/6669122fb7632a796bacd610/dolls",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -159,7 +195,8 @@
 							"path": [
 								"api",
 								"users",
-								"usersPrivate"
+								"6669122fb7632a796bacd610",
+								"dolls"
 							]
 						}
 					},
@@ -173,11 +210,21 @@
 				{
 					"name": "postDoll",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"userId\": \"66297da15b2d9694eea2c364\",\r\n  \"type\": \"Mapache\",\r\n  \"color\": \"Marron\",\r\n  \"accessories\": \"Notebook\"\r\n}",
+							"raw": "{\r\n  \"userId\": \"6669122fb7632a796bacd610\",\r\n  \"type\": \"Jirafa\",\r\n  \"color\": \"Rojo\",\r\n  \"accessories\": \"Guitarra\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -185,7 +232,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/dolls/dolls",
+							"raw": "http://localhost:8080/api/dolls",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -193,7 +240,6 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"dolls",
 								"dolls"
 							]
 						}
@@ -203,17 +249,26 @@
 				{
 					"name": "deleteDoll",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "id",
 								"value": "6626a2b3e7274c31230656fa",
-								"type": "text",
 								"disabled": true
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/api/dolls/dolls/6628ac1c189183bca6fc134f/66296eaab3963d572e103456",
+							"raw": "http://localhost:8080/api/dolls/666926265df41f894dcae0e7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -222,23 +277,21 @@
 							"path": [
 								"api",
 								"dolls",
-								"dolls",
-								"6628ac1c189183bca6fc134f",
-								"66296eaab3963d572e103456"
+								"666926265df41f894dcae0e7"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "getDolls (Private)",
+					"name": "getDolls",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imx1Y2hvLm1vcmVub0BsaXZlLmNvbSIsImlhdCI6MTcxMzk5NDg1NSwiZXhwIjoxNzEzOTk4NDU1fQ.KngBSjEDukHZpnS_DbZgd1dJGfn6OBC3odM49BPpR54",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -246,7 +299,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/dolls/dolls",
+							"raw": "http://localhost:8080/api/dolls",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -254,7 +307,6 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"dolls",
 								"dolls"
 							]
 						}
@@ -262,6 +314,69 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "RANKING",
+			"item": [
+				{
+					"name": "getRanking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/ranking",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"ranking"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imx1Y2hvLm1vcmVub0BsaXZlLmNvbSIsImlhdCI6MTcxODE1OTYwOCwiZXhwIjoxNzE4MTYzMjA4fQ.BGUXsoNv8k_hJKOLQORCFO5AnzVtEhGR2CCEbDPKueQ"
 		}
 	]
 }
