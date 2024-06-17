@@ -171,6 +171,37 @@
 					"response": []
 				},
 				{
+					"name": "getUserById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/users/6669fc7b025db8deae5fb36c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"6669fc7b025db8deae5fb36c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "getDollsByUser",
 					"request": {
 						"auth": {
@@ -224,7 +255,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"userId\": \"6669122fb7632a796bacd610\",\r\n  \"type\": \"Jirafa\",\r\n  \"color\": \"Rojo\",\r\n  \"accessories\": \"Guitarra\"\r\n}",
+							"raw": "{\r\n  \"userId\": \"6669122fb7632a796bacd610\",\r\n  \"type\": \"Jirafa\",\r\n  \"color\": \"Magenta\",\r\n  \"accessories\": \"Bajo\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
