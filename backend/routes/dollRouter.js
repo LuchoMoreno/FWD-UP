@@ -8,7 +8,7 @@ const Middleware = require('../middleware/auth-middleware');
 // Creo un nuevo peluche
 dollsRouter.post("/dolls", Middleware.verify, async (req,res) =>{
     
-    let userId = req.body.userId;
+    let userId = req.token.userId;
     let type = req.body.type;
     let color = req.body.color;
     let accessories = req.body.accessories;
@@ -50,7 +50,7 @@ dollsRouter.post("/dolls", Middleware.verify, async (req,res) =>{
   });
   
   
-  // Get de todos los muñecos (ESTE METODO ES PRIVADO) 
+  // Get de todos los muñecos (ESTE METODO ES PÚBLICO) 
   dollsRouter.get("/dolls", async (req, res) => {
     let limit = parseInt(req.query.limit) || 10;
     let offset = parseInt(req.query.offset) || 0;

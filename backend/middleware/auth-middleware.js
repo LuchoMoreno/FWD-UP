@@ -8,7 +8,7 @@ const verify = (req,res,next) =>{
         // Le hago un split porque viene en formato BEARER + {TOKEN}
         const token = req.headers.authorization.split(' ')[1];
 
-        const decode =  jwt.verify(token, SECRET);
+        req.token =  jwt.verify(token, SECRET);
 
         next();
 

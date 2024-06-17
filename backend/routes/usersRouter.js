@@ -43,7 +43,44 @@ usersRouter.get("/users", Middleware.verify, async (req, res) => {
 
 });
 
+// Obtengo todos los peluches de un usuario
+usersRouter.get('/users/me/dolls', Middleware.verify, async (req, res) => {
 
+  let userId = req.token.userId;
+  
+  try {
+  
+    const result = await UsrController.getPeluchesByUser(userId);
+
+    if (result) {
+      res.status(200).json(result);
+    } 
+    else {
+      res.status(404).send("No se ha podido encontrar los peluches.")
+    }
+  } 
+  
+  catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+
+// Obtengo mi propia informacion de usuario
+usersRouter.get("/users/me", Middleware.verify, async (req, res) => {
+  let userId = req.token.userId;
+  try {
+    const results = await UsrController.getUser(userId);
+    res.status(200).json(results);
+
+  } catch (error) {
+    res.status(500).send("Error. Intente más tarde (CHECK)")
+  }
+
+});
+
+
+// Obtengo un usuario por ID
 usersRouter.get("/users/:id", Middleware.verify, async (req, res) => {
 
   try {
@@ -51,7 +88,7 @@ usersRouter.get("/users/:id", Middleware.verify, async (req, res) => {
     res.status(200).json(results);
 
   } catch (error) {
-    res.status(500).send("Error. Intente más tarde.")
+    res.status(500).send("Error. Intente más tarde (CHECK)")
   }
 
 });
@@ -95,29 +132,6 @@ usersRouter.delete("/users/:id", Middleware.verify, async (req, res) => {
     res.status(500).send("Error")
   }
 });
-
-
-// Obtengo todos los peluches de un usuario
-usersRouter.get('/users/:id/dolls', Middleware.verify, async (req, res) => {
-  
-  try {
-  
-    const result = await UsrController.getPeluchesByUser(req.params.id);
-
-    if (result) {
-      res.status(200).json(result);
-    } 
-    else {
-      res.status(404).send("No se ha podido encontrar los peluches.")
-    }
-  } 
-  
-  catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
-
-
 
 
 module.exports = usersRouter;
