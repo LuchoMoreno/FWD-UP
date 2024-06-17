@@ -171,6 +171,37 @@
 					"response": []
 				},
 				{
+					"name": "getUser ME",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/users/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "getUserById",
 					"request": {
 						"auth": {
@@ -217,7 +248,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/users/6669122fb7632a796bacd610/dolls",
+							"raw": "http://localhost:8080/api/users/me/dolls/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -226,8 +257,9 @@
 							"path": [
 								"api",
 								"users",
-								"6669122fb7632a796bacd610",
-								"dolls"
+								"me",
+								"dolls",
+								""
 							]
 						}
 					},
@@ -255,7 +287,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"userId\": \"6669122fb7632a796bacd610\",\r\n  \"type\": \"Jirafa\",\r\n  \"color\": \"Magenta\",\r\n  \"accessories\": \"Bajo\"\r\n}",
+							"raw": "{\r\n  \"type\": \"Gato\",\r\n  \"color\": \"Blanco\",\r\n  \"accessories\": \"Pianito\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
