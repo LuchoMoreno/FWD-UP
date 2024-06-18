@@ -29,11 +29,11 @@ const addDoll = async (userId, type, color, accessories) => {
   if (!existUser) {
     return false; // Si el usuario no existe, retornar false
   }
-  
-  const doll = new Doll({ type: type, color: color, accessories: accessories, user: userId});
+
+  const doll = new Doll({ type: type, color: color, accessories: accessories, user: userId });
 
   let dollGuardado = await doll.save();
-  
+
   // Edito la instancia de usuario para agregarle el muñeco
   await Usr.findByIdAndUpdate(userId, { $push: { dolls: dollGuardado._id } });
 
@@ -42,10 +42,11 @@ const addDoll = async (userId, type, color, accessories) => {
   let ranking = await Ranking.findOne({ dollType: type });
   if (ranking) {
     ranking.chosenCount += 1;
-  } 
-  
+  }
+
   else {
-    ranking = new Ranking({dollType: type, chosenCount: 1
+    ranking = new Ranking({
+      dollType: type, chosenCount: 1
     });
   }
 
@@ -65,14 +66,25 @@ const deleteDoll = async (id) => {
       return false; // Si el muñeco no existe, retornar false
     }
 
+    // Guardar el tipo del muñeco antes de eliminarlo
+    let type = doll.type;
+
     // Eliminar el muñeco
     await Doll.findByIdAndDelete(id);
 
-    // Actualizar el usuario para eliminar la referencia del muñeco
-    //await Usr.findByIdAndUpdate(userId, { $pull: { dolls: dollId } });
-
     // Directamente elimino todos juntos de las referencias de dolls que existan en usuarios.
     await Usr.updateMany({ dolls: id }, { $pull: { dolls: id } });
+
+
+    // Decrementar el ranking para este tipo de muñeco
+    let ranking = await Ranking.findOne({ dollType: type });
+
+    if (ranking) {
+      ranking.chosenCount -= 1;
+      await ranking.save();
+    } else {
+      console.warn(`No se encontró el ranking para el tipo de muñeco: ${type}`);
+    }
 
     return true;
 
@@ -90,4 +102,4 @@ const contarDocumentos = async () => {
   return totalDolls;
 }
 
-module.exports = {getDoll, getAllDolls, addDoll, deleteDoll, contarDocumentos}
+module.exports = { getDoll, getAllDolls, addDoll, deleteDoll, contarDocumentos }
